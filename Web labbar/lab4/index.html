@@ -3,16 +3,45 @@
 <head>
   <meta charset="utf-8">
   <title>Best shop ever</title>
-    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
     <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+      <!--Make it look good on phones-->
+      <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="media/css/styles.css">
       <link href="https://fonts.googleapis.com/css?family=Spirax" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Jim+Nightshade" rel="stylesheet">
+
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+      google.charts.load('current', {'packages':['geochart']});
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Number of purchases'],
+          ['Germany', 100],
+          ['United States', 50],
+          ['Brazil', 4],
+          ['Canada', 60],
+          ['France', 600],
+          ['RU', 700],
+          ['Sweden', 1000]
+        ]);
+
+        var options = {};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+      </script>
+
     </head>
     <body>
-      <div class="container">
+      <div class="col-md-8 col-md-offset-2 container">
         <nav>
           <ul class="nav nav-pills">
             <li class="active">
@@ -27,25 +56,26 @@
               <a href="products.html">Products</a>
             </li>
             <li>
-              <a href="feedback.html">Products</a>
+              <a href="feedback.html">Feedback</a>
             </li>
           </ul>
         </nav>
         <div class="content row">
-          <div class="col-md-4">
+          <div class="col-md-5">
             <h3>Welcome to the Best shop ever</h3>
             <p><strong>We sell the best products in the world</strong></p>
             <p>Hello this is the best website, trust me!</p>
             <p>It's true.</p>
             <a href="https://google.com">Google</a>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-5">
             <p style="font-family: 'Jim Nightshade'; cursive;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nisl nibh,
               vestibulum sit amet commodo sed, interdum non urna. Fusce id dictum nulla.
               Maecenas eu efficitur nisl, non dapibus mauris.
               Praesent congue tristique ante non ornare. Cras aliquam placerat nisi.</p>
+            </div>
+            <div id="regions_div" class="col-md-10" style="width:100%; height:100%; min-height: 450px;"></div>
           </div>
         </div>
-      </div>
-    </body>
-    </html>
+      </body>
+      </html>

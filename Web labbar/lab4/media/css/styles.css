@@ -1,55 +1,15 @@
-body {
-background: #4dafd6;
-color: #000000;
+
+#regions_div{
+  min-height: 450px;
+  width:100%;
+  height:100%;
 }
-h1, h2, h3 {
-/* headers */
-color:  #2B2523;
-}
-a {
-/* anchors */
-color: #3398ce;
-}
-.navigation li{
-  font-size: 120%;
-  font-weight: bold;
-  float: left;
-  margin: 0;
-}
-.navigation ul{
-  background: #9BCCD5;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  width: 100%
-}
-.navigation a{
-  text-decoration: none;
-  padding: 12px;
-  display: block;
-}
-.navigation a.active {
-background: #FFFFFF; /* change to a color of your choice */
-}
-.container {
-width: 60%;
-min-width: 640px;
-margin: 0 auto;
-padding: 0;
-}
-.content {
-  background: white;
-  padding: 8px;
-}
-.content h1:first-child,
-.column p:first-child {
-margin-top: 0;
-}
-.column {
-  float: left;
-  width: 50%;
-}
-.column > div {
-padding-right: 6px;
+
+
+@media only screen and (max-width: 500px) {
+    #regions_div {
+        min-height: 70px;
+        width:100%;
+        height:100%;
+    }
 }
