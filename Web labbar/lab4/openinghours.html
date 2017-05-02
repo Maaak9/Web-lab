@@ -5,12 +5,14 @@
   <title>Best shop ever</title>
   <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
     <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+      <!--Make it look good on phones-->
+      <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="media/css/styles.css">
     </head>
     <body>
-      <div class="container">
+      <div class="col-md-8 col-md-offset-2 container">
         <nav>
           <ul class="nav nav-pills">
             <li>
@@ -23,7 +25,7 @@
               <a href="products.html">Products</a>
             </li>
             <li>
-              <a href="feedback.html">Products</a>
+              <a href="feedback.html">Feedback</a>
             </li>
           </ul>
         </nav>
@@ -31,11 +33,8 @@
           <header>Opening hours</header>
           <p>Welcome to my shop, we are open the following hours:</p>
           <ul class="list-group">
-            <li id=open-weekdays class="list-group-item">Mondays: 08.00-16.00</li>
-            <li id=open-weekdays class="list-group-item">Tuesdays: 08.00-16.00</li>
-            <li id=open-weekdays class="list-group-item">Wednesdays: 08.00-16.00</li>
-            <li id=open-weekdays class="list-group-item">Thursdays: 08.00-16.00</li>
-            <li id=open-friday class="list-group-item">Fridays: 08.00-14.00</li>
+            <li id=open-weekdays class="list-group-item">Mondays : 08.00-16.00</li>
+            <li id=open-friday class="list-group-item">Friday : 08.00-14:00</li>
             <li id=open-weekends class="list-group-item">Saturdays: Closed</li>
             <li id=open-weekends class="list-group-item">Sundays: Closed</li>
           </ul>
@@ -47,19 +46,30 @@
       {
         console.log(id);
         var d = document.getElementById(id);
-        d.classList.add("active");
+        d.className += " active";
       }
       var dateObject = new Date();
       var weekDayNr = dateObject.getDay();
+      var time = dateObject.getHours();
       //alert("Week day nr: " + weekDayNr);
-      if (weekDayNr == 6 || weekDayNr == 0) // Sat = 6, Sun = 0
-      {
-        activate("open-weekends");
-      } else if (weekDayNr == 5) // Friday = 5
-      {
-        activate("open-friday");
-      } else { // Other days
-        activate("open-weekdays");
+      if (weekDayNr > 0 && weekDayNr < 5) { // Sat = 6, Sun =
+        if(time > 7 && time < 16){
+          activate("open-weekdays");
+        }
+        else{
+          alert("Store is closed");
+        }
+      }
+      else if (weekDayNr == 5){ // Friday = 5
+        if(time > 7 && time < 14){
+          activate("open-friday");
+        }
+        else{
+          alert("Store is closed");
+        }
+      }
+      else { // Other days
+        alert("Store is closed");
       }
       </script>
 

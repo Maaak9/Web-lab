@@ -1,17 +1,17 @@
 <?php
 include('template.php');
 if (isset($_POST['username']) and isset($_POST['password'])) {
-  $name = $mysqli->real_escape_string($_POST['username']);
-  $pwd = $mysqli->real_escape_string($_POST['password']);
+  $name = $_POST['username'];
+  $pwd = $_POST['password'];
   $query = <<<END
   SELECT username, password, id FROM users
   WHERE username = '{$name}'
   AND password = '{$pwd}'
 END;
-  $result = $mysqli->query($query);
-  if ($result->num_rows > 0) {
-    $row = $result->fetch_object();
-    $_SESSION["username"] = $row->username;
+  $result = $conn->prepare($query);
+  $result->execute();
+  if ($row = $result->fetch(PDO::FETCH_OBJ)) {
+       $_SESSION["username"] = $row->username;
     $_SESSION["userId"] = $row->id;
     header("Location:index.php");
   } else {
